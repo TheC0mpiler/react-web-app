@@ -5,9 +5,11 @@ import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import LoginForm from "../forms/LoginForm";
 
-export class LoginPage extends React.Component {
+class LoginPage extends React.Component {
 	submit = data =>
-		this.props.login(data).then(() => this.props.history.push("/"));
+		this.props
+			.login(data)
+			.then(() => this.props.history.push("/dashBoard"));
 	render() {
 		return (
 			<div>
