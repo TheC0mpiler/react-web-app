@@ -6,8 +6,9 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { userLoggedIn } from "./actions/auth";
+import decode from "jwt-decode";
 
+import { userLoggedIn } from "./actions/auth";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./rootReducer";
@@ -18,7 +19,12 @@ const store = createStore(
 );
 
 if (localStorage.reactWebappJWT) {
-	const user = { token: localStorage.reactWebappJWT };
+	const payload = decode(localStorage.reactWebappJWT);
+	const user = {
+		token: localStorage.reactWebappJWT,
+		email: payload.email,
+		confirmed: payload.confirmed
+	};
 	store.dispatch(userLoggedIn(user));
 }
 

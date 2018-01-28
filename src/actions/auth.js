@@ -18,3 +18,10 @@ export const logout = () => dispatch => {
 	localStorage.removeItem("reactWebappJWT");
 	dispatch(userLoggedOut());
 };
+export const confirm = token => dispatch =>
+	api.user.confirm(token).then(user => {
+		localStorage.reactWebappJWT = user.token;
+		dispatch(userLoggedIn(user));
+	});
+export const resetPasswordRequest = ({ email }) => () =>
+	api.user.resetPasswordRequest(email);
