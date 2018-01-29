@@ -11,9 +11,11 @@ import ForgotPasswordPage from "./components/pages/ForgotPasswordPage";
 import ResetPasswordPage from "./components/pages/ResetPasswordPage";
 import UserRoute from "./components/routes/UserRoute";
 import GuestRoute from "./components/routes/GuestRoute";
+import TopNavigation from "./components/navigation/TopNavigation";
 
 const App = ({ location }) => (
 	<div className="ui container">
+		<TopNavigation />
 		<Route location={location} path="/" exact component={HomePage} />
 		<Route
 			location={location}
