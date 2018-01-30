@@ -5,6 +5,7 @@ import ConfirmEmailMessage from "../messages/ConfirmEmailMessage";
 
 const DashBoardPage = ({ isConfirmed }) => (
 	<div>{!isConfirmed && <ConfirmEmailMessage />}</div>
+	{books.length === 0 && <AddBookCtA/>}
 );
 DashBoardPage.propTypes = {
 	isConfirmed: PropTypes.bool.isRequired
